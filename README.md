@@ -18,7 +18,9 @@ Instruction to run :
 Instruction to run :
 [Note - I have implemented two versions for this subtask namely - `Subtask2-v1.0.ipynb` and `Subtask2-v2.0.ipynb`]
 1. __v1.0__- Run the `Subtask2-v1.0.ipynb` notebook. This implementation involves directly extracting tripels using spacy to find possible combination for [subj,pred,obj] triples and using the KG as a look up dictionary to further filter and extract the relevant triples. But unfortunately, the spacy extractor performs very poorly on our dataset given the irregularies and noise. Also, it consumes a very large memory footprint and time to extract the tripels (processes 100 instances in 3 minutes). Possible imrpovement could be seen by using coreference resolver before using the custom spacy's tripels extractor.
-2.  __v2.0__- Run the `Subtask2-v2.0.ipynb` notebook. This implementation is rather a very straightforward and quick approach to extract the tripels where we use spacy's NER to look for entities that could be candidate subjects. We then look up for these entities in the KG and if there is a match, we extract the triple from the KG. This approach is computationally very efficient but logically might not be the right approach. (This processes 100 instances in 30 seconds) 
+2.  __v2.0__- Run the `Subtask2-v2.0.ipynb` notebook. This implementation is rather a very straightforward and quick approach to extract the tripels where we use spacy's NER to look for entities that could be candidate subjects. We then look up for these entities in the KG and if there is a match, we extract the triple from the KG. This approach is computationally very efficient but logically might not be the right approach. This approach suprisingly outperforms v1.0 (This processes 100 instances in 30 seconds).
+
+[Note - The evaluation metric used in the code is rather a very loose implementation of any popular metrics for multi-label classification. Metrics like precision/recall/F1-scores can be used further by taking the size of the ground_labels and predicted_labels into consideration]  
 
 
 
